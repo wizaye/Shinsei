@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from jikanpy import Jikan
 import random
 
-
+import datetime
 
 from anime_api.apis.waifu_im.types import ImageTag, SearchSort, ImageOrientation
 
@@ -34,8 +34,7 @@ def get_anime_info(anime_title: str) -> str:
 
         return formatted_details
     except Exception as e:
-        print(e)
-        return f"An error occurred while fetching information for '{anime_title}'."
+        return f"An error occurred while fetching information for '{anime_title}':{e}."
 def get_anime_facts(anime_title: str) -> str:
     try:
         pass
@@ -87,7 +86,7 @@ def get_response(user_input: str) -> str:
 
     if lowered == '':
         return "Well, you're silent..."
-    elif 'hello' or 'hi' in lowered:
+    elif 'hello' in lowered or 'hi' in lowered:
         return 'Hello there!'
     elif 'how are you' in lowered:
         return 'I\'m doing great! Thanks for asking.'
